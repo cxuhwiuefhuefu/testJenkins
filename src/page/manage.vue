@@ -1,132 +1,66 @@
 <template>
-  <div class="manage_page fillcontain">
-    <el-row style="height: 100%">
-      <el-col :span="4" style="min-height: 100%; background-color: #324057">
-       
-        <NavMenu :menuList="menuList"></NavMenu>
-        
-      </el-col>
-      <el-col :span="20" style="height: 100%; overflow: auto">
-        <keep-alive>
-          <router-view></router-view>
-        </keep-alive>
-      </el-col>
-    </el-row>
-  </div>
+	<div class="manage_page fillcontain">
+		<el-row style="height: 100%;">
+	  		<el-col :span="4"  style="min-height: 100%; background-color: #324057;">
+				<el-menu :default-active="defaultActive" style="min-height: 100%;" theme="dark" router>
+					<el-menu-item index="manage"><i class="el-icon-menu"></i>首页</el-menu-item>
+					<el-submenu index="2">
+						<template slot="title"><i class="el-icon-document"></i>数据管理</template>
+						<el-menu-item index="userList">用户列表</el-menu-item>
+						<el-menu-item index="shopList">商家列表</el-menu-item>
+						<el-menu-item index="foodList">食品列表</el-menu-item>
+						<el-menu-item index="orderList">订单列表</el-menu-item>
+						<el-menu-item index="adminList">管理员列表</el-menu-item>
+					</el-submenu>
+					<el-submenu index="3">
+						<template slot="title"><i class="el-icon-plus"></i>添加数据</template>
+						<el-menu-item index="addShop">添加商铺</el-menu-item>
+						<el-menu-item index="addGoods">添加商品</el-menu-item>
+					</el-submenu>
+					<el-submenu index="4">
+						<template slot="title"><i class="el-icon-star-on"></i>图表</template>
+						<el-menu-item index="visitor">用户分布</el-menu-item>
+						<!-- <el-menu-item index="newMember">用户数据</el-menu-item> -->
+					</el-submenu>
+					<el-submenu index="5">
+						<template slot="title"><i class="el-icon-edit"></i>编辑</template>
+						<!-- <el-menu-item index="uploadImg">上传图片</el-menu-item> -->
+						<el-menu-item index="vueEdit">文本编辑</el-menu-item>
+					</el-submenu>
+					<el-submenu index="6">
+						<template slot="title"><i class="el-icon-setting"></i>设置</template>
+						<el-menu-item index="adminSet">管理员设置</el-menu-item>
+						<!-- <el-menu-item index="sendMessage">发送通知</el-menu-item> -->
+					</el-submenu>
+					<el-submenu index="7">
+						<template slot="title"><i class="el-icon-warning"></i>说明</template>
+						<el-menu-item index="explain">说明</el-menu-item>
+					</el-submenu>
+				</el-menu>
+			</el-col>
+			<el-col :span="20" style="height: 100%;overflow: auto;">
+				<keep-alive>
+				    <router-view></router-view>
+				</keep-alive>
+			</el-col>
+		</el-row>
+  	</div>
 </template>
 
 <script>
-// 引入导航栏组件
-import NavMenu from "@/components/navMenu";
-
-export default {
-  components: {
-    NavMenu
-  },
-  computed: {
-    defaultActive: function () {
-      console.log(11111);
-      return this.$route.path.replace("/", "");
-    },
-  },
-  data() {
-    return {
-      isCollapse: false,
-      menuList: [
-        {
-          path: "",
-          name: "数据管理",
-          icon:'el-icon-menu',
-          children: [
-            {
-              path: "",
-              name: "新闻列表",
-              icon:'el-icon-menu',
-              children: [
-                {
-                  path: "/newList/dblz",
-                  name: "代表履职",
-                  icon:'el-icon-menu',
-                },
-                {
-                  path: "/newList/rddt",
-                  name: "人大动态",
-                  icon:'el-icon-menu',
-                },
-              ]
-            },
-            {
-              path: "/freezeNews",
-              name: "解冻新闻",
-              icon:'el-icon-menu',
-            }
-          ]
-        },
-         {
-          path: "/1",
-          name: "设置",
-          icon:'el-icon-s-custom',
-          children: [
-            {
-              path: "/1/1",
-              name: "用户列表",
-              icon:'el-icon-menu',
-              children: [
-                {
-                  path: "/userList/ps",
-                  name: "坪山",
-                  icon:'el-icon-menu',
-                },
-                {
-                  path: "/userList/kz",
-                  name: "坑梓",
-                  icon:'el-icon-menu',
-                },
-                {
-                  path: "/userList/lt",
-                  name: "龙田",
-                  icon:'el-icon-menu',
-                },
-                {
-                  path: "/userList/bl",
-                  name: "碧岭",
-                  icon:'el-icon-menu',
-                },
-                {
-                  path: "/userList/sj",
-                  name: "石井",
-                  icon:'el-icon-menu',
-                },
-                {
-                  path: "/userList/ml",
-                  name: "马峦",
-                  icon:'el-icon-menu',
-                },
-              ]
-            },
-            {
-              path: "/adminList",
-              name: "管理员列表",
-              icon:'el-icon-menu',
-            }
-          ]
-        },
-        {
-          path: "/2",
-          name: "导航二",
-          icon:'el-icon-menu'
-        }
-      ]
-      
-      
-    };
-  },
-};
+    export default {
+		computed: {
+			defaultActive: function(){
+				return this.$route.path.replace('/', '');
+			}
+		},
+    }
 </script>
 
 
 <style lang="less" scoped>
-@import "../style/mixin";
-.manage_page {
-}
+	@import '../style/mixin';
+	.manage_page{
+		
+	}
 </style>

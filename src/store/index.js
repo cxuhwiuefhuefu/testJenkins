@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import {getAdminInfo} from '@/api/getData'
+import {getAdminInfo} from '@/api/getData'
 
 Vue.use(Vuex)
 
@@ -10,14 +10,12 @@ const state = {
 	},
 }
 
-// 同步	
 const mutations = {
 	saveAdminInfo(state, adminInfo){
 		state.adminInfo = adminInfo;
 	}
 }
 
-// 异步
 const actions = {
 	async getAdminData({commit}){
 		try{

@@ -1,18 +1,15 @@
 <template>
-  <div id="app" class="fillcontain">
-    <router-view/>
-  </div>
+    <div id="app" class="fillcontain">
+		    <router-view></router-view>
+    </div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+    export default {
+    	
+    }
 </script>
 
 <style lang="less">
-
-@import './style/common';
-
-
+	@import './style/common';
 </style>
